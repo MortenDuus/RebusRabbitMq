@@ -63,17 +63,17 @@ namespace Rebus.RabbitMq.Bug
 
     internal class Tester
     {
-        private readonly IBus _internalBus;
-        public Tester(IBus internalBus)
+        private readonly IBus _bus;
+        public Tester(IBus bus)
         {
-            _internalBus = internalBus;
+            _bus = bus;
         }
         
         public async Task TestRetry(object payload)
         {
             try
             {
-                await _internalBus.Publish(payload);
+                await _bus.Publish(payload);
             }
             catch (Exception e)
             {
